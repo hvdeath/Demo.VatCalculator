@@ -40,7 +40,7 @@ gross 40.00; a later vat-only input 6.67 -> net 33.35. Unavoidable; stated.
 ## API contract
 `POST /api/v1/vat/calculate`
 Request: `{ "rate": 20, "net"?: 100.00, "gross"?: ..., "vat"?: ... }`
-200: `{ rate, net, vat, gross, rounding: { digits: 2, rule: "MidpointRounding.AwayFromZero" } }`
+200: `{ rate, net, vat, gross }`
 400 (RFC 7807 ProblemDetails):
 `{ type, title, status, errors: { <field>: [{ code, message }] } }`
 
