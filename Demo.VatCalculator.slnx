@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Demo.VatCalculator.Api.Tests/Demo.VatCalculator.Api.Tests.csproj" />
+    <Project Path="src/Demo.VatCalculator.Api/Demo.VatCalculator.Api.csproj" />
+    <Project Path="src/Demo.VatCalculator.Core.Tests/Demo.VatCalculator.Core.Tests.csproj" />
+    <Project Path="src/Demo.VatCalculator.Core/Demo.VatCalculator.Core.csproj" />
+  </Folder>
+</Solution>

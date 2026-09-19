@@ -39,6 +39,11 @@ ScaffoldingReadMe.txt
 # dotenv environment variables file
 .env
 
+# Node / Angular
+node_modules/
+dist/
+.angular/cache/
+
 # Others
 ~$*
 *~
