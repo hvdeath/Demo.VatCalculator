@@ -1,6 +1,6 @@
 namespace Demo.VatCalculator.Core.VatCalculation;
 
-public static class VatCalculator
+public static class VatAmountCalculator
 {
     public static VatCalculationResponse Calculate(decimal amount, VatAmountKind kind, VatPercent rate)
     {

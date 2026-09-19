@@ -13,7 +13,7 @@ public sealed class VatCalculationService
         }
 
         var (kind, amount) = SelectAmount(request);
-        var response = VatCalculator.Calculate(amount, kind, (VatPercent)request.Rate);
+        var response = VatAmountCalculator.Calculate(amount, kind, (VatPercent)request.Rate);
         return VatCalculationResult.Valid(response);
     }
 

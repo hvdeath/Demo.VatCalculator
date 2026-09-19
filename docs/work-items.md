@@ -6,9 +6,9 @@ current one is approved.
 
 | # | Work item | Status |
 |---|-----------|--------|
-| 1 | Scaffold `Demo.VatCalculator.slnx` + projects (Core, Core.Tests, Api, Api.Tests) | done (awaiting review) |
-| 2 | Core domain: `VatPercent`, request/response contracts, `VatCalculator`, `VatCalculationValidator`, `MoneyConstants` | done (awaiting review) |
-| 3 | Core unit tests: formula tables, rounding boundaries, validation rules, max boundary, `net+vat==gross` scan | pending |
+| 1 | Scaffold `Demo.VatCalculator.slnx` + projects (Core, Core.Tests, Api, Api.Tests) | committed `c50726a` |
+| 2 | Core domain: `VatPercent`, request/response contracts, `VatAmountCalculator`, `VatCalculationValidator`, `MoneyConstants` | committed `1b897f0` |
+| 3 | Core unit tests: formula tables, rounding boundaries, validation rules, max boundary, `net+vat==gross` scan | done (awaiting review) |
 | 4 | API: minimal endpoint `POST /api/v1/vat/calculate`, error contract (ProblemDetails), OpenAPI + Swagger UI, http profile | pending |
 | 5 | API integration tests (`WebApplicationFactory`): happy paths + full 400 matrix + error shape | pending |
 | 6 | README.md rewrite: rounding, validation boundaries, API contract, architecture, non-goals | pending |

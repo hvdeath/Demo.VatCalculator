@@ -45,7 +45,7 @@ Request: `{ "rate": 20, "net"?: 100.00, "gross"?: ..., "vat"?: ... }`
 `{ type, title, status, errors: { <field>: [{ code, message }] } }`
 
 ## Architecture (vertical slice)
-- `Demo.VatCalculator.Core` — pure domain: `VatPercent`, `VatCalculator`,
+- `Demo.VatCalculator.Core` — pure domain: `VatPercent`, `VatAmountCalculator`,
   `VatCalculationValidator`, request/response records, `MoneyConstants`. No
   ASP.NET dependencies; fully unit-testable.
 - `Demo.VatCalculator.Api` — minimal API endpoint + uniform error mapping
