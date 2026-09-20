@@ -14,8 +14,8 @@ current one is approved.
 | 6 | README.md rewrite: rounding, validation boundaries, API contract, architecture, non-goals | committed `953c588` |
 | 7 | Scaffold Angular app in `src/Demo.VatCalculator.Ui` (standalone, SCSS, strict, Vitest) + proxy | committed `a0f154c` |
 | 8 | UI feature slice: `vat-calculator` component (signals, typed forms, Material), service, a11y, responsive layout | committed `a5564b9` |
-| 9 | UI tests (Vitest): component + service specs; `ng build` clean | done (awaiting review) |
-| 10 | E2E smoke: run API + `ng serve`, exercise via UI and HTTP | pending |
+| 9 | UI tests (Vitest): component + service specs; `ng build` clean | committed `79c0011` |
+| 10 | E2E smoke: run API + `ng serve`, exercise via UI and HTTP | done (awaiting review) |
 
 ## Notes
 - API is minimal API only; Swagger via `AddOpenApi()` + `Swashbuckle.AspNetCore.SwaggerUi`.

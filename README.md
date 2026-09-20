@@ -128,11 +128,15 @@ ignoring the extra data.
 
 ## Development
 
-Prerequisites: .NET 10 SDK, Node 20.19+ (npm), Angular 22 CLI.
+Prerequisites: .NET 10 SDK, Node 20.19+ (npm), Angular 22 CLI. The API runs on
+the `https` launch profile (the only one); it listens on `https://localhost:7111`
+and also serves plain HTTP on `http://localhost:5180`, which the frontend proxy
+and Swagger use. First run may require a trusted HTTPS dev certificate:
+`dotnet dev-certs https --trust`.
 
 ```bash
-# backend
-dotnet run --project src/Demo.VatCalculator.Api   # http://localhost:5180
+# backend (single launch profile: https)
+dotnet run --project src/Demo.VatCalculator.Api
 # swagger UI:  http://localhost:5180/swagger
 # openapi doc: http://localhost:5180/openapi/v1.json
 
