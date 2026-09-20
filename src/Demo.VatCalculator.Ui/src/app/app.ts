@@ -1,11 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { VatCalculatorComponent } from './features/vat-calculator/pages/vat-calculator.component';
 
 @Component({
   selector: 'app-root',
-  imports: [],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+  imports: [VatCalculatorComponent],
+  template: `<app-vat-calculator />`,
 })
-export class App {
-  protected readonly title = signal('Demo.VatCalculator.Ui');
-}
+export class App {}

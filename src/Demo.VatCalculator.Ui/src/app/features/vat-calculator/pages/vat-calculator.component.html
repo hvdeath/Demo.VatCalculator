@@ -1,0 +1,79 @@
+<mat-card appearance="outlined" class="calculator-card">
+  <mat-card-content>
+    <header>
+      <h2>VAT calculator</h2>
+      <p class="hint">
+        Austria — provide exactly one of Net, VAT or Gross and the applicable
+        VAT rate; the remaining amounts are computed.
+      </p>
+    </header>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <fieldset>
+        <legend>VAT rate</legend>
+        <mat-radio-group formControlName="rate" aria-label="VAT rate">
+          @for (rate of rates; track rate) {
+            <mat-radio-button [value]="rate">{{ rate }} %</mat-radio-button>
+          }
+        </mat-radio-group>
+      </fieldset>
+
+      <fieldset>
+        <legend>Known amount</legend>
+        <mat-radio-group formControlName="kind" aria-label="Which amount is known?">
+          @for (kind of kinds; track kind) {
+            <mat-radio-button [value]="kind">{{ kindLabels[kind] }}</mat-radio-button>
+          }
+        </mat-radio-group>
+      </fieldset>
+
+      <mat-form-field appearance="outline" class="amount-field">
+        <mat-label>{{ kindLabels[form.controls.kind.value] }} (EUR)</mat-label>
+        <input
+          matInput
+          formControlName="amount"
+          type="text"
+          inputmode="decimal"
+          autocomplete="off"
+          placeholder="e.g. 100,00"
+        />
+        <mat-hint>Use a dot or a comma as decimal separator.</mat-hint>
+        @if (form.controls.amount.touched && form.controls.amount.invalid) {
+          <mat-error>{{ amountError() }}</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="actions">
+        <button
+          mat-flat-button
+          type="submit"
+          color="primary"
+          [disabled]="form.invalid || pending()"
+        >
+          {{ pending() ? 'Calculating…' : 'Calculate' }}
+        </button>
+      </div>
+    </form>
+
+    @if (error(); as message) {
+      <div class="error-box" role="alert">{{ message }}</div>
+    }
+
+    @if (result(); as result) {
+      <dl class="result" role="status">
+        <div class="result-row">
+          <dt>Net</dt>
+          <dd>{{ result.net | currency: 'EUR' }}</dd>
+        </div>
+        <div class="result-row">
+          <dt>VAT ({{ result.rate }} %)</dt>
+          <dd>{{ result.vat | currency: 'EUR' }}</dd>
+        </div>
+        <div class="result-row">
+          <dt>Gross</dt>
+          <dd>{{ result.gross | currency: 'EUR' }}</dd>
+        </div>
+      </dl>
+    }
+  </mat-card-content>
+</mat-card>

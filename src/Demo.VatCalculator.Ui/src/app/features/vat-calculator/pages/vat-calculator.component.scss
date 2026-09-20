@@ -1,0 +1,107 @@
+:host {
+  display: block;
+  min-height: 100%;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.calculator-card {
+  max-width: 960px;
+  margin: 0 auto;
+
+  mat-card-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+header {
+  h2 {
+    margin: 0 0 0.5rem;
+  }
+
+  .hint {
+    margin: 0;
+    max-width: 60ch;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+legend {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+mat-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+.amount-field {
+  width: 100%;
+  max-width: 22rem;
+}
+
+.actions {
+  display: flex;
+}
+
+.error-box {
+  border-radius: 0.25rem;
+  border: 0 solid transparent;
+  border-left-width: 0.25rem;
+  padding: 0.75rem 1rem;
+  background-color: color-mix(in srgb, var(--mat-sys-error) 8%, transparent);
+  border-color: var(--mat-sys-error);
+  color: var(--mat-sys-on-error-container);
+}
+
+.result {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  background-color: var(--mat-sys-surface-container);
+
+  .result-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  dt {
+    font-size: 0.875rem;
+  }
+
+  dd {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .calculator-card mat-card-content {
+    grid-template-columns: 1fr;
+  }
+}
