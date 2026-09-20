@@ -38,9 +38,9 @@
           placeholder="e.g. 100,00"
         />
         <mat-hint>Use a dot or a comma as decimal separator.</mat-hint>
-        @if (form.controls.amount.touched && form.controls.amount.invalid) {
-          <mat-error>{{ amountError() }}</mat-error>
-        }
+        <mat-error>{{
+          form.controls.amount.errors | vatErrorMessage: form.controls.amount.touched
+        }}</mat-error>
       </mat-form-field>
 
       <div class="actions">

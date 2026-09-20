@@ -1,7 +1,6 @@
 import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { FormBuilder, ReactiveFormsModule, Validators, type AbstractControl } from '@angular/forms';
-import { merge } from 'rxjs';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import {
@@ -14,6 +13,7 @@ import {
 import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
 import { CurrencyPipe } from '@angular/common';
 import type { VatCalculationRequest, VatCalculationResponse } from '../models/vat-calculator.model';
+import { VatErrorMessagePipe } from '../pipes/vat-error-message.pipe';
 import { VatCalculatorService } from '../services/vat-calculator.service';
 import { vatAmountValidator } from '../validators/vat-amount.validator';
 
@@ -34,6 +34,7 @@ export type AmountKind = 'net' | 'gross' | 'vat';
     MatRadioButton,
     MatButton,
     CurrencyPipe,
+    VatErrorMessagePipe,
   ],
   templateUrl: './vat-calculator.component.html',
   styleUrl: './vat-calculator.component.scss',
@@ -60,14 +61,6 @@ export class VatCalculatorComponent {
   protected readonly result = signal<VatCalculationResponse | null>(null);
   protected readonly error = signal<string | null>(null);
   protected readonly pending = signal(false);
-  protected readonly amountError = signal<string | null>(null);
-
-  constructor() {
-    const amount = this.form.controls.amount;
-    merge(amount.valueChanges, amount.statusChanges)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(() => this.amountError.set(this.messageFor(amount)));
-  }
 
   protected submit(): void {
     if (this.pending()) {
@@ -103,27 +96,5 @@ export class VatCalculatorComponent {
         this.pending.set(false);
       },
     });
-  }
-
-  private messageFor(control: AbstractControl): string | null {
-    if (!control.touched || control.pristine || !control.errors) {
-      return null;
-    }
-
-    const errors = control.errors;
-
-    if (errors['required']) {
-      return 'Enter an amount.';
-    }
-    if (errors['invalidFormat']) {
-      return 'Use a number with at most 2 decimals (e.g. 12,34 or 12.34).';
-    }
-    if (errors['notPositive']) {
-      return 'Amount must be greater than 0.';
-    }
-    if (errors['tooLarge']) {
-      return 'Amount may not exceed 1 000 000 000.00.';
-    }
-    return null;
   }
 }

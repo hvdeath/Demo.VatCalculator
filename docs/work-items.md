@@ -13,8 +13,8 @@ current one is approved.
 | 5 | API integration tests (`WebApplicationFactory`): happy paths + full 400 matrix + error shape | committed `29f0f56` |
 | 6 | README.md rewrite: rounding, validation boundaries, API contract, architecture, non-goals | committed `953c588` |
 | 7 | Scaffold Angular app in `src/Demo.VatCalculator.Ui` (standalone, SCSS, strict, Vitest) + proxy | committed `a0f154c` |
-| 8 | UI feature slice: `vat-calculator` component (signals, typed forms, Material), service, a11y, responsive layout | done (awaiting review) |
-| 9 | UI tests (Vitest): component + service specs; `ng build` clean | pending |
+| 8 | UI feature slice: `vat-calculator` component (signals, typed forms, Material), service, a11y, responsive layout | committed `a5564b9` |
+| 9 | UI tests (Vitest): component + service specs; `ng build` clean | done (awaiting review) |
 | 10 | E2E smoke: run API + `ng serve`, exercise via UI and HTTP | pending |
 
 ## Notes

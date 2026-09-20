@@ -9,7 +9,7 @@ export function vatAmountValidator(): ValidatorFn {
 
     const normalized = value.trim().replace(',', '.');
 
-    if (!/^\d+(\.\d{1,2})?$/.test(normalized)) {
+    if (!/^-?\d+(\.\d{1,2})?$/.test(normalized)) {
       return { invalidFormat: true };
     }
 
