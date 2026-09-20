@@ -8,11 +8,11 @@ current one is approved.
 |---|-----------|--------|
 | 1 | Scaffold `Demo.VatCalculator.slnx` + projects (Core, Core.Tests, Api, Api.Tests) | committed `c50726a` |
 | 2 | Core domain: `VatPercent`, request/response contracts, `VatAmountCalculator`, `VatCalculationValidator`, `MoneyConstants` | committed `1b897f0` |
-| 3 | Core unit tests: formula tables, rounding boundaries, validation rules, max boundary, `net+vat==gross` scan | done (awaiting review) |
+| 3 | Core unit tests: formula tables, rounding boundaries, validation rules, max boundary, `net+vat==gross` scan | committed `4a7e633` |
 | 4 | API: minimal endpoint `POST /api/v1/vat/calculate`, error contract (ProblemDetails), OpenAPI + Swagger UI, http profile | committed `3c9662f` |
 | 5 | API integration tests (`WebApplicationFactory`): happy paths + full 400 matrix + error shape | committed `29f0f56` |
 | 6 | README.md rewrite: rounding, validation boundaries, API contract, architecture, non-goals | committed `953c588` |
-| 7 | Scaffold Angular app in `src/Demo.VatCalculator.Ui` (standalone, SCSS, strict, Vitest) + proxy | pending |
+| 7 | Scaffold Angular app in `src/Demo.VatCalculator.Ui` (standalone, SCSS, strict, Vitest) + proxy | done (awaiting review) |
 | 8 | UI feature slice: `vat-calculator` component (signals, typed forms, Material), service, a11y, responsive layout | pending |
 | 9 | UI tests (Vitest): component + service specs; `ng build` clean | pending |
 | 10 | E2E smoke: run API + `ng serve`, exercise via UI and HTTP | pending |
