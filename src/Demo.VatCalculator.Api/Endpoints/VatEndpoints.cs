@@ -11,9 +11,9 @@ public static class VatEndpoints
 
         group.MapPost(
             "/calculate",
-            (VatCalculationRequest request, VatCalculationService service) =>
+            (VatCalculationRequest request) =>
             {
-                var result = service.Execute(request);
+                var result = VatCalculationService.Execute(request);
                 return result.IsValid
                     ? Results.Ok(result.Response)
                     : Results.Problem(ProblemFactory.ValidationFailed(result.Errors!));

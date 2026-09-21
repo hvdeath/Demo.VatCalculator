@@ -16,9 +16,14 @@ current one is approved.
 | 8 | UI feature slice: `vat-calculator` component (signals, typed forms, Material), service, a11y, responsive layout | committed `a5564b9` |
 | 9 | UI tests (Vitest): component + service specs; `ng build` clean | committed `79c0011` |
 | 10 | E2E smoke: run API + `ng serve`, exercise via UI and HTTP | done (awaiting review) |
+| 11 | Static analysis gates: .NET analyzers (warnings-as-errors, `AnalysisMode` Recommended) via `Directory.Build.props` + root `.editorconfig`; ESLint (`@angular-eslint`) + strict TS for Angular; coverage gates at 90% line (backend + UI) | done (awaiting review) |
+| 12 | CI: GitHub Actions workflow (`.github/workflows/ci.yml`) — restore/install, build, lint/analyze, run all tests, enforce 90% line coverage both stacks | pending |
 
 ## Notes
 - API is minimal API only; Swagger via `AddOpenApi()` + `Swashbuckle.AspNetCore.SwaggerUi`.
 - Business rules live only in Core; validator/calculator carry no ASP.NET dependencies.
 - Rounding: `MidpointRounding.AwayFromZero`, 2 dp, single rounding pass, remainder-derived third amount.
 - Max amount: `1_000_000_000.00`; unknown JSON fields rejected.
+- Build is warning-clean and warnings-as-errors; analyzer/style deviations are pinned (with reason) in the root `.editorconfig`.
+- Frontend: flat-config ESLint (`@angular-eslint` + `typescript-eslint` recommended), strict TS compiler settings (`strict`, `noUnusedLocals`, `noUnusedParameters`, `strictTemplates`).
+- Coverage gate: 90% **line** coverage everywhere — .NET via `coverlet.msbuild` (`Threshold` 90, `ThresholdType` line), UI via `@angular/build:unit-test` `coverageThresholds`; enforced locally and in CI.

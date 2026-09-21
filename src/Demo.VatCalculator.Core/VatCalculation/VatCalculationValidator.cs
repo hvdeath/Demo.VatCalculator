@@ -1,11 +1,11 @@
 namespace Demo.VatCalculator.Core.VatCalculation;
 
-public sealed class VatCalculationValidator
+public static class VatCalculationValidator
 {
     private static readonly int[] SupportedRates =
         Enum.GetValues<VatPercent>().Select(p => (int)p).ToArray();
 
-    public VatValidationResult Validate(VatCalculationRequest request)
+    public static VatValidationResult Validate(VatCalculationRequest request)
     {
         var errors = new Dictionary<string, List<VatCalculationError>>();
 
@@ -72,7 +72,7 @@ public sealed class VatCalculationValidator
     }
 
     private static void Add(
-        IDictionary<string, List<VatCalculationError>> errors,
+        Dictionary<string, List<VatCalculationError>> errors,
         string field,
         string code,
         string message)
@@ -86,7 +86,7 @@ public sealed class VatCalculationValidator
         list.Add(new VatCalculationError(code, message));
     }
 
-    private static IReadOnlyDictionary<string, IReadOnlyList<VatCalculationError>> AsReadOnly(
+    private static Dictionary<string, IReadOnlyList<VatCalculationError>> AsReadOnly(
         IDictionary<string, List<VatCalculationError>> errors) =>
         errors.ToDictionary(kvp => kvp.Key, kvp => (IReadOnlyList<VatCalculationError>)kvp.Value);
 }

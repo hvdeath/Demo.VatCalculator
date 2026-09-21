@@ -1,12 +1,10 @@
 namespace Demo.VatCalculator.Core.VatCalculation;
 
-public sealed class VatCalculationService
+public static class VatCalculationService
 {
-    private readonly VatCalculationValidator _validator = new();
-
-    public VatCalculationResult Execute(VatCalculationRequest request)
+    public static VatCalculationResult Execute(VatCalculationRequest request)
     {
-        var validation = _validator.Validate(request);
+        var validation = VatCalculationValidator.Validate(request);
         if (!validation.IsValid)
         {
             return VatCalculationResult.Invalid(validation.Errors!);

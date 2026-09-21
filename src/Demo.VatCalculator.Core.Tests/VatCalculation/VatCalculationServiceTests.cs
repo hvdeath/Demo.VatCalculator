@@ -4,15 +4,13 @@ namespace Demo.VatCalculator.Core.Tests.VatCalculation;
 
 public sealed class VatCalculationServiceTests
 {
-    private readonly VatCalculationService _sut = new();
-
     [Theory]
     [InlineData(10)]
     [InlineData(13)]
     [InlineData(20)]
     public void Execute_returns_calculated_response_for_net_input(int rate)
     {
-        var result = _sut.Execute(new VatCalculationRequest(rate, Net: 200m, null, null));
+        var result = VatCalculationService.Execute(new VatCalculationRequest(rate, Net: 200m, null, null));
 
         Assert.True(result.IsValid);
         Assert.NotNull(result.Response);
@@ -24,7 +22,7 @@ public sealed class VatCalculationServiceTests
     [Fact]
     public void Execute_calculates_from_gross_when_only_gross_is_provided()
     {
-        var result = _sut.Execute(new VatCalculationRequest(20, null, Gross: 120m, null));
+        var result = VatCalculationService.Execute(new VatCalculationRequest(20, null, Gross: 120m, null));
 
         Assert.True(result.IsValid);
         Assert.Equal(100m, result.Response!.Net);
@@ -35,7 +33,7 @@ public sealed class VatCalculationServiceTests
     [Fact]
     public void Execute_calculates_from_vat_when_only_vat_is_provided()
     {
-        var result = _sut.Execute(new VatCalculationRequest(10, null, null, Vat: 10m));
+        var result = VatCalculationService.Execute(new VatCalculationRequest(10, null, null, Vat: 10m));
 
         Assert.True(result.IsValid);
         Assert.Equal(100m, result.Response!.Net);
@@ -46,7 +44,7 @@ public sealed class VatCalculationServiceTests
     [Fact]
     public void Execute_returns_validation_errors_without_a_response()
     {
-        var result = _sut.Execute(new VatCalculationRequest(20, null, null, null));
+        var result = VatCalculationService.Execute(new VatCalculationRequest(20, null, null, null));
 
         Assert.False(result.IsValid);
         Assert.Null(result.Response);

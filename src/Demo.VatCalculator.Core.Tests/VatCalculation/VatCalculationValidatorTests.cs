@@ -4,15 +4,13 @@ namespace Demo.VatCalculator.Core.Tests.VatCalculation;
 
 public sealed class VatCalculationValidatorTests
 {
-    private readonly VatCalculationValidator _sut = new();
-
     [Theory]
     [InlineData(10)]
     [InlineData(13)]
     [InlineData(20)]
     public void Validate_accepts_supported_rates(int rate)
     {
-        var result = _sut.Validate(CreateRequest(rate, net: 100m));
+        var result = VatCalculationValidator.Validate(CreateRequest(rate, net: 100m));
 
         Assert.True(result.IsValid);
     }
@@ -25,7 +23,7 @@ public sealed class VatCalculationValidatorTests
     [InlineData(100)]
     public void Validate_rejects_unsupported_rates(int rate)
     {
-        var result = _sut.Validate(CreateRequest(rate, net: 100m));
+        var result = VatCalculationValidator.Validate(CreateRequest(rate, net: 100m));
 
         Assert.False(result.IsValid);
         AssertSingleError(result, "rate", "vat.rateNotSupported");
@@ -34,7 +32,7 @@ public sealed class VatCalculationValidatorTests
     [Fact]
     public void Validate_rejects_when_no_amount_was_provided()
     {
-        var result = _sut.Validate(new VatCalculationRequest(20, null, null, null));
+        var result = VatCalculationValidator.Validate(new VatCalculationRequest(20, null, null, null));
 
         Assert.False(result.IsValid);
         AssertSingleError(result, "amount", "vat.noAmount");
@@ -53,7 +51,7 @@ public sealed class VatCalculationValidatorTests
             providedFields.Contains("gross") ? 100m : null,
             providedFields.Contains("vat") ? 100m : null);
 
-        var result = _sut.Validate(request);
+        var result = VatCalculationValidator.Validate(request);
 
         Assert.False(result.IsValid);
         Assert.Equal(providedFields.Length, result.Errors!.Count);
@@ -69,7 +67,7 @@ public sealed class VatCalculationValidatorTests
     [InlineData("vat")]
     public void Validate_rejects_zero_amounts(string field)
     {
-        var result = _sut.Validate(WithAmount(field, 0m));
+        var result = VatCalculationValidator.Validate(WithAmount(field, 0m));
 
         Assert.False(result.IsValid);
         AssertSingleError(result, field, "vat.amountNotPositive");
@@ -87,7 +85,7 @@ public sealed class VatCalculationValidatorTests
     [MemberData(nameof(NegativeAmounts))]
     public void Validate_rejects_negative_amounts(string field, decimal amount)
     {
-        var result = _sut.Validate(WithAmount(field, amount));
+        var result = VatCalculationValidator.Validate(WithAmount(field, amount));
 
         Assert.False(result.IsValid);
         AssertSingleError(result, field, "vat.amountNotPositive");
@@ -105,7 +103,7 @@ public sealed class VatCalculationValidatorTests
     [MemberData(nameof(ExcessivePrecisionAmounts))]
     public void Validate_rejects_amounts_with_excessive_precision(string field, decimal amount)
     {
-        var result = _sut.Validate(WithAmount(field, amount));
+        var result = VatCalculationValidator.Validate(WithAmount(field, amount));
 
         Assert.False(result.IsValid);
         AssertSingleError(result, field, "vat.excessivePrecision");
@@ -117,7 +115,7 @@ public sealed class VatCalculationValidatorTests
     [InlineData("vat")]
     public void Validate_accepts_maximum_amount(string field)
     {
-        var result = _sut.Validate(WithAmount(field, MoneyConstants.MaxAmount));
+        var result = VatCalculationValidator.Validate(WithAmount(field, MoneyConstants.MaxAmount));
 
         Assert.True(result.IsValid);
     }
@@ -128,7 +126,7 @@ public sealed class VatCalculationValidatorTests
     [InlineData("vat")]
     public void Validate_rejects_amounts_exceeding_maximum(string field)
     {
-        var result = _sut.Validate(WithAmount(field, MoneyConstants.MaxAmount + 0.01m));
+        var result = VatCalculationValidator.Validate(WithAmount(field, MoneyConstants.MaxAmount + 0.01m));
 
         Assert.False(result.IsValid);
         AssertSingleError(result, field, "vat.amountTooLarge");

@@ -6,7 +6,6 @@ using Demo.VatCalculator.Core.VatCalculation;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
-builder.Services.AddSingleton<VatCalculationService>();
 
 builder.Services.ConfigureHttpJsonOptions(options =>
 {

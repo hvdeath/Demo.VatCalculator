@@ -1,0 +1,25 @@
+# https://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = true
+end_of_line = crlf
+
+[*.cs]
+indent_style = space
+indent_size = 4
+curly_bracket_next_line = true
+
+# --- Analyzer / style severity triage -------------------------------------
+# Every deliberate deviation from the recommended .NET analyzer set is
+# recorded here with the reason. Add rules only when the build surfaces them.
+
+# CA1707 (naming: underscore separators): xUnit test methods conventionally
+# use underscores (`Method_condition_expected`). Not applicable to test code.
+[**/*Tests*/**/*.cs]
+dotnet_diagnostic.CA1707.severity = none
+
+[**/*.Tests/*.cs]
+dotnet_diagnostic.CA1707.severity = none
