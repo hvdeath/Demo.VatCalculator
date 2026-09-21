@@ -11,6 +11,8 @@ end_of_line = crlf
 indent_style = space
 indent_size = 4
 curly_bracket_next_line = true
+# Suppress CA1848 logging analyzer recommendations in this repository
+dotnet_diagnostic.CA1848.severity = none
 
 # --- Analyzer / style severity triage -------------------------------------
 # Every deliberate deviation from the recommended .NET analyzer set is

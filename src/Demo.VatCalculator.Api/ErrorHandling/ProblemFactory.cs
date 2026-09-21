@@ -9,6 +9,7 @@ internal static class ProblemFactory
     public const string MalformedBodyType = "urn:demo-vat:malformed-body";
     public const string UnknownFieldType = "urn:demo-vat:unknown-field";
     public const string ProblemJsonMediaType = "application/problem+json";
+    public const string InternalServerErrorType = "urn:demo-vat:internal-server-error";
 
     public static ProblemDetails ValidationFailed(
         IReadOnlyDictionary<string, IReadOnlyList<VatCalculationError>> errors) =>
@@ -19,6 +20,19 @@ internal static class ProblemFactory
             Status = StatusCodes.Status400BadRequest,
             Detail = "The request did not pass validation. See the 'errors' member for field-level details.",
             Errors = errors,
+        };
+
+    public static ProblemDetails InternalServerError(string detail) =>
+        new ErrorProblemDetails
+        {
+            Type = InternalServerErrorType,
+            Title = "Internal server error.",
+            Status = StatusCodes.Status500InternalServerError,
+            Detail = detail,
+            Errors = new Dictionary<string, IReadOnlyList<VatCalculationError>>
+            {
+                ["server"] = [new VatCalculationError("vat.internalError", detail)],
+            },
         };
 
     public static ProblemDetails MalformedBody(string detail) =>

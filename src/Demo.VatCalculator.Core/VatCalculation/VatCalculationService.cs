@@ -1,8 +1,8 @@
 namespace Demo.VatCalculator.Core.VatCalculation;
 
-public static class VatCalculationService
+public sealed class VatCalculationService : IVatCalculationService
 {
-    public static VatCalculationResult Execute(VatCalculationRequest request)
+    public VatCalculationResult Execute(VatCalculationRequest request)
     {
         var validation = VatCalculationValidator.Validate(request);
         if (!validation.IsValid)

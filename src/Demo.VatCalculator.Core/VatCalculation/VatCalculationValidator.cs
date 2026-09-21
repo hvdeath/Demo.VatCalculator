@@ -2,7 +2,7 @@ namespace Demo.VatCalculator.Core.VatCalculation;
 
 public static class VatCalculationValidator
 {
-    private static readonly int[] SupportedRates =
+    public static readonly int[] SupportedRates =
         Enum.GetValues<VatPercent>().Select(p => (int)p).ToArray();
 
     public static VatValidationResult Validate(VatCalculationRequest request)

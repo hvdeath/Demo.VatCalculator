@@ -8,15 +8,15 @@ public static class VatEndpoints
     public static void MapVatEndpoints(this WebApplication app)
     {
         var group = app.MapGroup("/api/v1/vat");
-
         group.MapPost(
             "/calculate",
-            (VatCalculationRequest request) =>
+            (VatCalculationRequest request, IVatCalculationService service) =>
             {
-                var result = VatCalculationService.Execute(request);
+                var result = service.Execute(request);
                 return result.IsValid
                     ? Results.Ok(result.Response)
                     : Results.Problem(ProblemFactory.ValidationFailed(result.Errors!));
-            });
+            })
+            .WithDescription($"Calculate VAT for a given request. \n\nAllowed rate values: {string.Join(", ", Enum.GetValues<VatPercent>().Select(p => (int)p).ToArray())}.");
     }
 }

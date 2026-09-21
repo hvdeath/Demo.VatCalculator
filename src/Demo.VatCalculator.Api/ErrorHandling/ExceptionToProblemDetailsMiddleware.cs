@@ -1,10 +1,10 @@
+using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.VatCalculator.Api.ErrorHandling;
 
-public sealed partial class ExceptionToProblemDetailsMiddleware(RequestDelegate next)
+public sealed partial class ExceptionToProblemDetailsMiddleware(RequestDelegate next, ILogger<ExceptionToProblemDetailsMiddleware> logger)
 {
     private static readonly JsonSerializerOptions ProblemJsonOptions = new(JsonSerializerDefaults.Web);
 
@@ -27,7 +27,15 @@ public sealed partial class ExceptionToProblemDetailsMiddleware(RequestDelegate 
                 ? (ProblemDetails)ProblemFactory.UnknownField(property)
                 : ProblemFactory.MalformedBody(UnwrapMessage(ex));
 
+            logger.LogWarning(ex, "Request parsing failed: {Message}", ex.Message);
             await WriteProblemAsync(context, problem, statusCode);
+        }
+        catch (Exception ex)
+        {
+            // Unexpected exception: log and return a generic 500 ProblemDetails
+            logger.LogError(ex, "Unhandled exception while processing request");
+            var problem = ProblemFactory.InternalServerError("An unexpected error occurred.");
+            await WriteProblemAsync(context, problem, StatusCodes.Status500InternalServerError);
         }
     }
 

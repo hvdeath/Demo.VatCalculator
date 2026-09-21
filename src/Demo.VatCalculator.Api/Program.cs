@@ -1,11 +1,12 @@
-using System.Text.Json.Serialization;
 using Demo.VatCalculator.Api.Endpoints;
 using Demo.VatCalculator.Api.ErrorHandling;
 using Demo.VatCalculator.Core.VatCalculation;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
+builder.Services.AddSingleton<IVatCalculationService, VatCalculationService>();
 
 builder.Services.ConfigureHttpJsonOptions(options =>
 {

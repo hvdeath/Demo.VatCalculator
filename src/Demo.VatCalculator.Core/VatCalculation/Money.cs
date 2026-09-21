@@ -6,5 +6,5 @@ public static class Money
         decimal.Round(value, MoneyConstants.Scale, MidpointRounding.AwayFromZero);
 
     public static bool HasExcessivePrecision(decimal value) =>
-        value % 0.01m != 0m;
+        decimal.Round(value, MoneyConstants.Scale) != value;
 }
