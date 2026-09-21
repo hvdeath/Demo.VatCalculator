@@ -1,4 +1,6 @@
-namespace Demo.VatCalculator.Core.VatCalculation;
+using Demo.VatCalculator.Core.VatCalculation.Dtos;
+
+namespace Demo.VatCalculator.Core.VatCalculation.Validators;
 
 public sealed class VatValidationResult(bool isValid, IReadOnlyDictionary<string, IReadOnlyList<VatCalculationError>>? errors)
 {

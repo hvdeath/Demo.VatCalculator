@@ -1,4 +1,7 @@
-namespace Demo.VatCalculator.Core.VatCalculation;
+using Demo.VatCalculator.Core.VatCalculation.Calculators;
+using Demo.VatCalculator.Core.VatCalculation.Dtos;
+
+namespace Demo.VatCalculator.Core.VatCalculation.Validators;
 
 public static class VatCalculationValidator
 {

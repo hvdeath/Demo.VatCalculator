@@ -1,6 +1,6 @@
 using Demo.VatCalculator.Api.Endpoints;
 using Demo.VatCalculator.Api.ErrorHandling;
-using Demo.VatCalculator.Core.VatCalculation;
+using Demo.VatCalculator.Core.VatCalculation.Services;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);

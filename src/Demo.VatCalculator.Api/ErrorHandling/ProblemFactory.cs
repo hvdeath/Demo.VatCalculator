@@ -1,4 +1,4 @@
-using Demo.VatCalculator.Core.VatCalculation;
+using Demo.VatCalculator.Core.VatCalculation.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.VatCalculator.Api.ErrorHandling;

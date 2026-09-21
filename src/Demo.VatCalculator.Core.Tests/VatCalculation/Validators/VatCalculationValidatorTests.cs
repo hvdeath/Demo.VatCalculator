@@ -1,6 +1,8 @@
-using Demo.VatCalculator.Core.VatCalculation;
+using Demo.VatCalculator.Core.VatCalculation.Calculators;
+using Demo.VatCalculator.Core.VatCalculation.Dtos;
+using Demo.VatCalculator.Core.VatCalculation.Validators;
 
-namespace Demo.VatCalculator.Core.Tests.VatCalculation;
+namespace Demo.VatCalculator.Core.Tests.VatCalculation.Validators;
 
 public sealed class VatCalculationValidatorTests
 {

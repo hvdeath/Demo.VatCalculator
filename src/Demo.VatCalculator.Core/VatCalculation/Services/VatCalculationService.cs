@@ -1,4 +1,8 @@
-namespace Demo.VatCalculator.Core.VatCalculation;
+using Demo.VatCalculator.Core.VatCalculation.Calculators;
+using Demo.VatCalculator.Core.VatCalculation.Dtos;
+using Demo.VatCalculator.Core.VatCalculation.Validators;
+
+namespace Demo.VatCalculator.Core.VatCalculation.Services;
 
 public sealed class VatCalculationService : IVatCalculationService
 {

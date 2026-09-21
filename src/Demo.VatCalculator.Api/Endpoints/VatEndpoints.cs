@@ -1,5 +1,7 @@
 using Demo.VatCalculator.Api.ErrorHandling;
-using Demo.VatCalculator.Core.VatCalculation;
+using Demo.VatCalculator.Core.VatCalculation.Calculators;
+using Demo.VatCalculator.Core.VatCalculation.Dtos;
+using Demo.VatCalculator.Core.VatCalculation.Services;
 
 namespace Demo.VatCalculator.Api.Endpoints;
 

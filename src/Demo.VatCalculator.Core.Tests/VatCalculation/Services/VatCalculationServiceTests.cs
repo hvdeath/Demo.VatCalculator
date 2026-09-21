@@ -1,6 +1,7 @@
-using Demo.VatCalculator.Core.VatCalculation;
+using Demo.VatCalculator.Core.VatCalculation.Dtos;
+using Demo.VatCalculator.Core.VatCalculation.Services;
 
-namespace Demo.VatCalculator.Core.Tests.VatCalculation;
+namespace Demo.VatCalculator.Core.Tests.VatCalculation.Services;
 
 public sealed class VatCalculationServiceTests
 {

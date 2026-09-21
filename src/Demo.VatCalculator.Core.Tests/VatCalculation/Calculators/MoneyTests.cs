@@ -1,6 +1,6 @@
-using Demo.VatCalculator.Core.VatCalculation;
+using Demo.VatCalculator.Core.VatCalculation.Calculators;
 
-namespace Demo.VatCalculator.Core.Tests.VatCalculation;
+namespace Demo.VatCalculator.Core.Tests.VatCalculation.Calculators;
 
 public class MoneyTests
 {

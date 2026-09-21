@@ -1,4 +1,4 @@
-namespace Demo.VatCalculator.Core.VatCalculation;
+namespace Demo.VatCalculator.Core.VatCalculation.Calculators;
 
 public static class Money
 {

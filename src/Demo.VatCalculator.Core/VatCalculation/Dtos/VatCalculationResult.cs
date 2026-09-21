@@ -1,4 +1,4 @@
-namespace Demo.VatCalculator.Core.VatCalculation;
+namespace Demo.VatCalculator.Core.VatCalculation.Dtos;
 
 public sealed record VatCalculationResult(
     VatCalculationResponse? Response,

@@ -1,4 +1,6 @@
-namespace Demo.VatCalculator.Core.VatCalculation;
+using Demo.VatCalculator.Core.VatCalculation.Dtos;
+
+namespace Demo.VatCalculator.Core.VatCalculation.Calculators;
 
 public static class VatAmountCalculator
 {
