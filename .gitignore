@@ -62,3 +62,4 @@ TestResult.xml
 nunit-*.xml
 /.vs
 /src/Nt.Demo.AwesomeWarehouse.WebApi/.vs
+/src/.vs

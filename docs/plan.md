@@ -67,19 +67,19 @@ Request: `{ "rate": 20, "net"?: 100.00, "gross"?: ..., "vat"?: ... }`
   standalone component, typed forms, signals, Material, service, Vitest specs).
   Dev via `proxy.conf.json` `/api` -> API http port. Desktop responsive
   (>=1280px); mobile out of scope.
-- Build-time wiring (see "Engineering gates"): `Directory.Build.props` + root
-  `.editorconfig` apply analyzers and warnings-as-errors to all .NET projects;
-  `global.json` pins the SDK; the UI has its own `.editorconfig` and a
-  flat-config `eslint.config.js`.
+- Build-time wiring (see "Engineering gates"): `src/Directory.Build.props`
+  applies analyzers and warnings-as-errors to all .NET projects; the root
+  `.editorconfig` sets style baseline; `src/global.json` pins the SDK; the UI
+  has its own `.editorconfig` and a flat-config `eslint.config.js`.
 
 ## Repo layout
 ```
 README.md
-Demo.VatCalculator.slnx
-Directory.Build.props
 .editorconfig
-global.json
 .github/workflows/ci.yml
+src/Demo.VatCalculator.slnx
+src/Directory.Build.props
+src/global.json
 src/Demo.VatCalculator.Core/          Demo.VatCalculator.Core.Tests/
 src/Demo.VatCalculator.Api/           Demo.VatCalculator.Api.Tests/
 src/Demo.VatCalculator.Ui/            (eslint.config.js, tsconfig*.json, angular.json)

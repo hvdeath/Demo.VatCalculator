@@ -141,7 +141,7 @@ dotnet run --project src/Demo.VatCalculator.Api
 # openapi doc: http://localhost:5180/openapi/v1.json
 
 # tests
-dotnet test Demo.VatCalculator.slnx
+dotnet test src/Demo.VatCalculator.slnx
 cd src/Demo.VatCalculator.Ui && npm test && npm run build
 
 # frontend dev server (proxies /api to :5180)

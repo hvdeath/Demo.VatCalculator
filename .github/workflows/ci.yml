@@ -21,13 +21,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
         with:
-          global-json-file: global.json
+          global-json-file: src/global.json
       - name: Restore
-        run: dotnet restore Demo.VatCalculator.slnx
+        run: dotnet restore src/Demo.VatCalculator.slnx
       - name: Build (warnings-as-errors)
-        run: dotnet build Demo.VatCalculator.slnx --no-restore
+        run: dotnet build src/Demo.VatCalculator.slnx --no-restore
       - name: Test (coverage gate >= 90% line)
-        run: dotnet test Demo.VatCalculator.slnx --no-build --no-restore
+        run: dotnet test src/Demo.VatCalculator.slnx --no-build --no-restore
       - name: Upload coverage
         uses: actions/upload-artifact@v4
         with:
