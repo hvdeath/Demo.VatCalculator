@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  dotnet:
+    name: Backend
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - name: Restore
+        run: dotnet restore Demo.VatCalculator.slnx
+      - name: Build (warnings-as-errors)
+        run: dotnet build Demo.VatCalculator.slnx --no-restore
+      - name: Test (coverage gate >= 90% line)
+        run: dotnet test Demo.VatCalculator.slnx --no-build --no-restore
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: dotnet-coverage
+          path: src/**/TestResults/coverage.cobertura.xml
+          if-no-files-found: error
+          retention-days: 7
+
+  frontend:
+    name: Frontend
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: src/Demo.VatCalculator.Ui
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: src/Demo.VatCalculator.Ui/package-lock.json
+      - name: Install
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Build (strict TS)
+        run: npm run build
+      - name: Test (coverage gate >= 90% line)
+        run: npm test -- --watch=false
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-coverage
+          path: src/Demo.VatCalculator.Ui/coverage
+          if-no-files-found: error
+          retention-days: 7
