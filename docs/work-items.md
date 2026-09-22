@@ -18,6 +18,7 @@ current one is approved.
 | 10 | E2E smoke: run API + `ng serve`, exercise via UI and HTTP | done (awaiting review) |
 | 11 | Static analysis gates: .NET analyzers (warnings-as-errors, `AnalysisMode` Recommended) via `Directory.Build.props` + root `.editorconfig`; ESLint (`@angular-eslint`) + strict TS for Angular; coverage gates at 90% line (backend + UI) | done (awaiting review) |
 | 12 | CI: GitHub Actions workflow (`.github/workflows/ci.yml`) — restore/install, build, lint/analyze, run all tests, enforce 90% line coverage both stacks | done (awaiting review) |
+| 13 | Responsive mobile view: mobile-first layout (breakpoints, full-width tap targets, safe-area insets, compact result rows) | committed |
 
 ## Notes
 - API is minimal API only; Swagger via `AddOpenApi()` + `Swashbuckle.AspNetCore.SwaggerUi`.

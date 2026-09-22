@@ -16,7 +16,7 @@ Pragmatic vertical-slice structure with clear boundaries.
 |---|---|
 | `Demo.VatCalculator.Core` | Pure domain + use case. VAT formula, money rounding, validation. No ASP.NET dependencies. |
 | `Demo.VatCalculator.Api` | Minimal API endpoint, JSON contract enforcement, uniform HTTPS error contract, OpenAPI/Swagger. No business logic. |
-| `Demo.VatCalculator.Ui` | Angular 22 SPA. Lightweight form validation mirror; server is authoritative. |
+| `Demo.VatCalculator.Ui` | Angular 22 SPA. Lightweight form validation mirror; server is authoritative. Responsive, mobile-first (small-phone breakpoints, full-width tap targets, safe-area insets). |
 | `*.Tests` / UI specs | Core unit tests (xUnit), API integration tests (`WebApplicationFactory`), UI tests (Vitest). |
 
 The core folder `VatCalculation/` is a vertical slice:
@@ -189,6 +189,5 @@ Access it at `http://localhost:8080` (or the URL shown in the terminal output).
 - **Authentication/authorization** — no user context needed for a stateless calculator.
 - **Persistence / audit log** — calculations are deterministic; no store required.
 - **Multi-currency** — Austria/EUR only; rates are the three Austrian VAT rates.
-- **Mobile-optimized layout** — desktop-first; responsive only at standard desktop widths.
 - **API versioning library, generic repository, DI abstractions** — the single version,
   single calculator, and tiny dependency graph do not warrant them (YAGNI).

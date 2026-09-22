@@ -65,8 +65,9 @@ Request: `{ "rate": 20, "net"?: 100.00, "gross"?: ..., "vat"?: ... }`
   (ProblemDetails). No business logic.
 - `Demo.VatCalculator.Ui` — Angular app (`app/vat-calculator/` feature slice:
   standalone component, typed forms, signals, Material, service, Vitest specs).
-  Dev via `proxy.conf.json` `/api` -> API http port. Desktop responsive
-  (>=1280px); mobile out of scope.
+  Dev via `proxy.conf.json` `/api` -> API http port. Responsive, mobile-first
+  layout (feel: breakpoints at 479px max for phones, 768px min for tablet/desktop;
+  safe-area insets; full-width tap targets on small screens).
 - Build-time wiring (see "Engineering gates"): `src/Directory.Build.props`
   applies analyzers and warnings-as-errors to all .NET projects; the root
   `.editorconfig` sets style baseline; `src/global.json` pins the SDK; the UI
@@ -109,4 +110,4 @@ docs/work-items.md
 
 ## Non-goals (deliberately not built)
 Auth/authorization, persistence/audit, multi-currency, invoice generation,
-mobile optimization, containerization, API versioning package.
+containerization, API versioning package.
