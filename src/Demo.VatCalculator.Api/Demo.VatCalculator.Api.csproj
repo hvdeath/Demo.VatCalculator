@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
+    <ProjectReference Include="..\Demo.VatCalculator.Api.ServiceDefaults\Demo.VatCalculator.Api.ServiceDefaults.csproj" />
     <ProjectReference Include="..\Demo.VatCalculator.Core\Demo.VatCalculator.Core.csproj" />
   </ItemGroup>
 

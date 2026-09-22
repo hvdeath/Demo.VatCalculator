@@ -5,6 +5,8 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 builder.Services.AddOpenApi();
 builder.Services.AddSingleton<IVatCalculationService, VatCalculationService>();
 
@@ -22,6 +24,7 @@ app.MapOpenApi();
 app.UseSwaggerUI(options =>
     options.SwaggerEndpoint("/openapi/v1.json", "Demo.VatCalculator API v1"));
 
+app.MapDefaultEndpoints();
 app.MapVatEndpoints();
 
 app.Run();

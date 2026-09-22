@@ -148,6 +148,42 @@ cd src/Demo.VatCalculator.Ui && npm test && npm run build
 cd src/Demo.VatCalculator.Ui && ng serve
 ```
 
+### Testing with .NET Aspire
+
+The project includes Aspire support for integrated orchestration of the backend API and Angular frontend during local development and testing.
+
+#### Prerequisites
+- .NET Aspire CLI: `dotnet tool install -g Aspire.CLI`
+
+#### Running with Aspire
+
+Start the Aspire AppHost, which orchestrates both the ASP.NET Core API and the Node.js Angular app:
+
+```bash
+aspire start
+```
+
+This will:
+- Launch the backend API (`api`) on HTTPS with health checks
+- Launch the Angular frontend (`frontend`) and proxy it to the API
+- Display the Aspire dashboard at `http://localhost:8080` with resource health, logs, and observability features
+
+Alternatively, use the .NET CLI directly:
+
+```bash
+dotnet run --project src/Demo.VatCalculator.AppHost
+```
+
+#### Aspire Dashboard
+
+The dashboard provides:
+- **Resource overview** — real-time health and status of the API and frontend
+- **Live logs** — streamed output from each service
+- **Structured traces** — distributed tracing (OpenTelemetry integration via `ServiceDefaults`)
+- **Metrics** — resource utilization and request throughput
+
+Access it at `http://localhost:8080` (or the URL shown in the terminal output).
+
 ## Deliberately not built
 
 - **Authentication/authorization** — no user context needed for a stateless calculator.
