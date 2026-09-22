@@ -1,7 +1,9 @@
 <Solution>
   <Folder Name="/api/">
+    <Project Path="Demo.VatCalculator.Api.ServiceDefaults/Demo.VatCalculator.Api.ServiceDefaults.csproj" />
     <Project Path="Demo.VatCalculator.Api.Tests/Demo.VatCalculator.Api.Tests.csproj" />
     <Project Path="Demo.VatCalculator.Api/Demo.VatCalculator.Api.csproj" />
+    <Project Path="Demo.VatCalculator.AppHost/Demo.VatCalculator.AppHost.csproj" />
   </Folder>
   <Folder Name="/core/">
     <Project Path="Demo.VatCalculator.Core.Tests/Demo.VatCalculator.Core.Tests.csproj" />
