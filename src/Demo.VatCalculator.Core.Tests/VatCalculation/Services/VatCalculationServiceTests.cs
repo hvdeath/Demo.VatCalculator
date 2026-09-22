@@ -1,4 +1,4 @@
-using Demo.VatCalculator.Core.VatCalculation.Dtos;
+using Demo.VatCalculator.Contracts.VatCalculation;
 using Demo.VatCalculator.Core.VatCalculation.Services;
 
 namespace Demo.VatCalculator.Core.Tests.VatCalculation.Services;

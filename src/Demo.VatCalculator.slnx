@@ -6,6 +6,7 @@
     <Project Path="Demo.VatCalculator.AppHost/Demo.VatCalculator.AppHost.csproj" />
   </Folder>
   <Folder Name="/core/">
+    <Project Path="Demo.VatCalculator.Contracts/Demo.VatCalculator.Contracts.csproj" Id="7bd762b3-9744-44ef-ae62-4497359a3807" />
     <Project Path="Demo.VatCalculator.Core.Tests/Demo.VatCalculator.Core.Tests.csproj" />
     <Project Path="Demo.VatCalculator.Core/Demo.VatCalculator.Core.csproj" />
   </Folder>

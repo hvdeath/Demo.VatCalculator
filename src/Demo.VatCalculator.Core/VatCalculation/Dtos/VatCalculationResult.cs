@@ -1,3 +1,5 @@
+using Demo.VatCalculator.Contracts.VatCalculation;
+
 namespace Demo.VatCalculator.Core.VatCalculation.Dtos;
 
 public sealed record VatCalculationResult(
